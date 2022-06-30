@@ -1214,13 +1214,10 @@ begin
         ResName := Format('_CAMERA_FLASH_%d', [TrayIconIdx]);
       end
     //tisDefault:
-    else ResName := 'MAINICON';
+    else ResName := '_CAMERA';
   end;
 
-  {$IfDef windows}
-  TrayIcon.Icon.Handle := LoadImage(HInstance, PChar(ResName), IMAGE_ICON,
-    16, 16, LR_DEFAULTCOLOR);
-  {$EndIf}
+  TrayIcon.Icon.LoadFromResourceName(HInstance, ResName);
 end;
 
 procedure TMainForm.TrayIconAnimationTimerTimer(Sender: TObject);
@@ -1231,10 +1228,7 @@ begin
   begin
     Inc(TrayIconIdx);
     ResName := Format('_CAMERA_FLASH_%d', [TrayIconIdx]);
-    {$IfDef windows}
-    TrayIcon.Icon.Handle := LoadImage(HInstance, PChar(ResName), IMAGE_ICON,
-      16, 16, LR_DEFAULTCOLOR);
-    {$EndIf}
+    TrayIcon.Icon.LoadFromResourceName(HInstance, ResName);
   end
   else
   begin
