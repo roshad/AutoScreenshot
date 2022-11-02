@@ -620,7 +620,7 @@ begin
   else
     TrayIconState := tisBlackWhite;
 
-  if IsEnabled then
+  if AEnabled then
     DebugLn('Automatic capture started')
   else
     DebugLn('Automatic capture stopped');
